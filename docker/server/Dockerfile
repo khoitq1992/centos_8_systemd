@@ -26,6 +26,7 @@ RUN dnf -y install wget unzip && \
 RUN dnf module enable nodejs:12 -y && \
     dnf install nodejs -y
 
+
 # install font
 RUN cd /usr/local/src/ && \
     dnf install -y google-noto-sans-cjk-ttc-fonts && \
@@ -40,7 +41,12 @@ RUN cd /usr/local/src/ && \
     mv MODI_kurobara-gothic /usr/share/fonts/MODI_kurobara-gothic
 
 # config
-RUN mkdir /var/www/html/web
+RUN mkdir /var/www/html/web && \
+    rm /etc/httpd/conf.d/welcome.conf
+
+COPY ./conf/web.conf /etc/httpd/conf.d/.
+
+RUN systemctl enable httpd
 
 # finish
 EXPOSE 80/tcp
