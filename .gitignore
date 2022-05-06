@@ -3,4 +3,4 @@
 /docker/server/log/
 /docker/server/conf.d/
 .idea
-/docker/database/*.*
+/server/

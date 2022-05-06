@@ -14,9 +14,7 @@ services:
     restart: always
     privileged: true
     volumes:
-      - "./server-develop:/var/www/html/web"
-      - "./docker/server/log:/var/www/html/log"
-      - "./docker/server/fonts:/usr/share/fonts"
+      - "./server:/var/www/html/web"
     tty: true
     stdin_open: true
     container_name: ktweb
@@ -31,7 +29,8 @@ services:
       POSTGRES_USER: web.local
       POSTGRES_DB: web.local
       POSTGRES_PASSWORD: web.local
-
+    volumes:
+      - "./docker/database:/home/database"
     tty: true
     stdin_open: true
     container_name: ktdb

@@ -1,11 +1,4 @@
 0. Clone git chứa docker về. Link: https://github.com/khoitq1992/centos_8_systemd
 1. Vào thư mục vừa clone. Clone git website khách về.
-
-2. Download "fonts.zip", giải nén, chép vào "{project_root}/docker/server/" (File zip lưu trên channel chat)
-
-3. Download file database, chép vào "{project_root}/docker/database/"
-3. Mở CMD tại thư mục {project_root}, chạy lần lượt các lệnh sau:
-
+2. Mở CMD tại thư mục {project_root}, chạy lần lượt các lệnh sau:
    -  docker-compose up -d
-   -  docker exec -i ktweb /bin/bash -c "cd /var/www/html/web && composer install && npm install"
-   -  docker exec -i ktweb /bin/bash -c "cd /var/www/html/web && php artisan serve --host=localhost --port=80 --env=local"
