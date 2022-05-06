@@ -1,4 +1,4 @@
-0. Clone git.
+0. Clone git. Chép thư mục fonts vào "{project_root}/docker/server/."
 1. Vào thư mục project root.
 2. Chạy lệnh "docker build --rm -t local/c8-systemd ./docker/server/centos_8_systemd/."
 3. Chạy lệnh "docker-compose up -d"
