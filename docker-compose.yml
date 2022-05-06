@@ -1,0 +1,46 @@
+version: "3"
+
+services:
+  web:
+    platform: linux/x86_64  # Mac M1 Chip
+    build:
+      context: ./docker/server
+      dockerfile: Dockerfile
+    image: srweb
+    depends_on:
+      - db
+    ports:
+      - "8888:80"
+    restart: always
+    privileged: true
+    volumes:
+      - "./server-develop:/var/www/html/web"
+      - "./docker/server/log:/var/www/html/log"
+      - "./docker/server/fonts:/usr/share/fonts"
+    tty: true
+    stdin_open: true
+    container_name: ktweb
+
+  db:
+    platform: linux/x86_64 # Mac M1 Chip
+    image: postgres:13
+    ports:
+      - "5432:5432"
+    restart: always
+    environment:
+      POSTGRES_USER: web.local
+      POSTGRES_DB: web.local
+      POSTGRES_PASSWORD: web.local
+
+    tty: true
+    stdin_open: true
+    container_name: ktdb
+
+volumes:
+  web:
+  db:
+
+networks:
+  default:
+    external:
+      name: ktnetwork

@@ -1,0 +1,6 @@
+0. Clone git.
+1. Vào thư mục project root.
+2. Chạy lệnh "docker build --rm -t local/c8-systemd ./docker/server/centos_8_systemd/."
+3. Chạy lệnh "docker-compose up -d"
+4. docker exec -i ktweb /bin/bash -c "cd /var/www/html/web && composer install && npm install"
+5. Vào trong container của web stop con httpd. Sau đó chạy lệnh php artisan serve tại "/var/www/html/web" để chạy web.
